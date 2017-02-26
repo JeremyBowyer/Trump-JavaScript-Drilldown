@@ -68,12 +68,3 @@ county_trump_spreads <- data.frame(code = polls_results$County_ID,
 				   Poll_Spread = polls_results$Trump_Polling_Spread,
 				   Result_Spread = polls_results$Trump_County_Spread * 100,
 				   value = polls_results$Trump_Spread, stringsAsFactors = FALSE)
-json_trump_counties <- toJSON(county_trump_spreads)
-
-
-## Upload JSON file to FTP
-#Trump
-write(json_trump_counties, "json_trump_counties.json")
-ftpUpload("json_trump_counties.json",
-		paste0(ftp,"json_trump_counties.json"),
-		  userpwd = cred)
